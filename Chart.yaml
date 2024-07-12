@@ -1,0 +1,13 @@
+apiVersion: v2
+name: retailcode-mtn
+description: A retailcode-mtn infrastructure aimed to deploy RC VAS.
+
+type: application
+
+version: 0.1.0
+appVersion: "1.0.0"
+
+maintainers: # (optional)
+  - name: Isaiah Adeleke
+    email: aisaiaholusegun@gmail.com
+    url: https://www.linkedin.com/in/isaiah-adeleke-67046610a/

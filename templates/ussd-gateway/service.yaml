@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "retailcode-mtn.ussdgateway.name" . }}
+  labels:
+    app: {{ include "retailcode-mtn.ussdgateway.name" . }}
+spec:
+  selector:
+    app: {{ include "retailcode-mtn.ussdgateway.name" . }}
+  ports:
+    - protocol: TCP
+      name: {{ .Values.service.name }}
+      port: {{ .Values.service.port }}
+  type: {{ .Values.service.type }}

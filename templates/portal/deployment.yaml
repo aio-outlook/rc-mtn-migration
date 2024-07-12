@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ include "retailcode-mtn.portal.name" . }}
+  name:  {{ include "retailcode-mtn.portal.name" . }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app:  {{ include "retailcode-mtn.portal.name" . }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+      maxUnavailable: 50%
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 600
+  template:
+    metadata:
+      labels:
+        app: {{ include "retailcode-mtn.portal.name" .}}
+    spec:
+      containers:
+      - image: "{{ .Values.portal.image.repository }}:{{ .Values.portal.image.tag }}"
+        name: {{ include "retailcode-mtn.portal.name" .}}
+        imagePullPolicy:  {{ .Values.portal.image.pullPolicy }}
+        ports:
+          - name: web
+            containerPort: {{ .Values.portal.service.targetPort}}
+        securityContext:
+          privileged: false
