@@ -22,12 +22,21 @@ spec:
         app: {{ .Chart.Name }}
     spec:
       containers:
-      - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      - image: "{{ .Values.image.repository }}"
         name: {{ .Chart.Name }}
-        imagePullPolicy:  {{ .Values.image.pullPolicy }}
+        imagePullPolicy:  {{ .Values.backend.image.pullPolicy }}
         ports:
           - name: web
-            containerPort: {{ .Values.service.targetPort}}
+            containerPort: {{ .Values.backend.service.targetPort}}
+        {{- if .Values.backend.resources.enable }}
+        resources:
+          requests:
+            cpu: {{ .Values.backend.resources.requests.cpu }}
+            memory: {{ .Values.backend.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.backend.resources.limits.cpu }}
+            memory: {{ .Values.backend.resources.limits.memory }}
+        {{- end }}
         securityContext:
         {{ if or (eq .Values.namespace "retcodedev") (eq .Values.namespace "retcodeprod")}}
             privileged: {{ .Values.securityContext.privileged }}

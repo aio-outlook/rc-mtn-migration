@@ -28,14 +28,14 @@ spec:
         ports:
           - name: web
             containerPort: {{ .Values.ussdgateway.service.targetPort}}
-        {{- if .Values.resources.enable }}
+        {{- if .Values.ussdgateway.resources.enable }}
         resources:
           requests:
-            cpu: {{ .Values.resources.requests.cpu }}
-            memory: {{ .Values.resources.requests.memory }}
+            cpu: {{ .Values.ussdgateway.resources.requests.cpu }}
+            memory: {{ .Values.ussdgateway.resources.requests.memory }}
           limits:
-            cpu: {{ .Values.resources.limits.cpu }}
-            memory: {{ .Values.resources.limits.memory }}
+            cpu: {{ .Values.ussdgateway.resources.limits.cpu }}
+            memory: {{ .Values.ussdgateway.resources.limits.memory }}
         {{- end }}
         securityContext:
         {{ if or (eq .Values.namespace "retcodedev") (eq .Values.namespace "retcodeprod")}}
