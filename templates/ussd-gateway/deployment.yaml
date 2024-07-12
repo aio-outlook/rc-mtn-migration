@@ -29,4 +29,15 @@ spec:
           - name: web
             containerPort: {{ .Values.ussdgateway.service.targetPort}}
         securityContext:
+        {{ if or (eq .Values.namespace "retcodedev") (eq .Values.namespace "retcodeprod")}}
+            privileged: {{ .Values.securityContext.privileged }}
+            allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
+            runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
+            capabilities:
+              drop:
+                - "ALL"
+            seccompProfile:
+              type: {{ .Values.securityContext.seccompProfile.type }}
+        {{ else }}
           privileged: false
+        {{- end }}
