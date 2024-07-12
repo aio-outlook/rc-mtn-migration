@@ -30,7 +30,6 @@ spec:
             containerPort: {{ .Values.service.targetPort}}
         securityContext:
         {{ if or (eq .Values.namespace "retcodedev") (eq .Values.namespace "retcodeprod")}}
-          # {{ include "retailcode-mtn.securityContext" . | nindent 4 }}
             privileged: {{ .Values.securityContext.privileged }}
             allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
             runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
