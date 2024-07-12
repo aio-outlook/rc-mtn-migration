@@ -28,5 +28,4 @@ spec:
         ports:
           - name: web
             containerPort: {{ .Values.service.targetPort}}
-        securityContext:
-          privileged: false
+        {{ include "retailcode-mtn.securityContext" . | indent 8 }}
