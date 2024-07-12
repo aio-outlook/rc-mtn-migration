@@ -28,6 +28,15 @@ spec:
         ports:
           - name: web
             containerPort: {{ .Values.ussdgateway.service.targetPort}}
+        {{- if .Values.resources.enable }}
+        resources:
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
+        {{- end }}
         securityContext:
         {{ if or (eq .Values.namespace "retcodedev") (eq .Values.namespace "retcodeprod")}}
             privileged: {{ .Values.securityContext.privileged }}
