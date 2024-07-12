@@ -94,7 +94,6 @@ app.kubernetes.io/instance: {{ include "retailcode-mtn.ussdgateway.name" . }}
 
 
 {{- define "retailcode-mtn.securityContext" -}}
-securityContext:
   privileged: {{ .Values.securityContext.privileged }}
   allowPrivilegeEscalation: {{ .Values.securityContext.allowPrivilegeEscalation }}
   runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}

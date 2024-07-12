@@ -28,4 +28,9 @@ spec:
         ports:
           - name: web
             containerPort: {{ .Values.service.targetPort}}
-        {{ include "retailcode-mtn.securityContext" . | indent 8 }}
+        securityContext:
+        {{ if or (eq .Values.namespace "retcodedev") (eq .Values.namespace "retcodeprod")}}
+          {{ include "retailcode-mtn.securityContext" . }}
+        {{ else }}
+          privileged: false
+        {{- end }}
