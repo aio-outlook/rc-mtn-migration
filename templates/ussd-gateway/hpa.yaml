@@ -1,4 +1,4 @@
-{{- if and (eq .Values.autoscaling.enabled true) (not  (eq .Values.namespace "dev")) }}
+{{- if and (eq .Values.autoscaling.enabled true) (not  (eq .Values.namespace "retcodedev")) }}
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
