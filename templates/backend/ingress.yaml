@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: retailcode-mtn-ingress
+spec:
+  rules:
+  - host: retailcode-mtn
+    http:
+      paths:
+      - pathType: ImplementationSpecific 
+        backend:
+          service:
+            name: retailcode-mtn
+            port:
+              number: 80
