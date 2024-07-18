@@ -9,6 +9,6 @@ spec:
     app: {{ .Chart.Name }}
   ports:
     - protocol: TCP
-      name: {{ .Values.service.name }}
-      port: {{ .Values.service.port }}
+      name: {{ .Values.backend.service.name }}
+      port: {{ .Values.backend.service.port }}
   type: {{ .Values.backend.service.type }}
