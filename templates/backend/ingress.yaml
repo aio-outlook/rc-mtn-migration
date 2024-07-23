@@ -4,7 +4,7 @@ metadata:
   name: retailcode-mtn-ingress
 spec:
   rules:
-  - host: retailcode-mtn
+  - host: retailcode-mtn.retailcode.africa
     http:
       paths:
       - pathType: ImplementationSpecific 
