@@ -22,7 +22,7 @@ spec:
         app: {{ include "retailcode-mtn.ussdgateway.name" . }}
     spec:
       containers:
-      - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      - image: "{{ .Values.ussdgateway.image.repository }}"
         name: {{ include "retailcode-mtn.ussdgateway.name" . }}
         imagePullPolicy:  {{ .Values.ussdgateway.image.pullPolicy }}
         ports:
