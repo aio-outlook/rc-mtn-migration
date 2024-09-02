@@ -1,3 +1,4 @@
+{{- if (eq .Values.namespace "retcodedev") }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -13,3 +14,4 @@ spec:
             name: retailcode-mtn
             port:
               number: {{ .Values.backend.service.port }}
+{{- end }}
