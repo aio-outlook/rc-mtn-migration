@@ -50,3 +50,7 @@ spec:
         {{ else }}
           privileged: false
         {{- end }}
+    {{- if eq .Values.namespace "retcode" }}
+      imagePullSecrets:
+      - name: {{ .Values.backend.image.secret }}
+    {{- end }}
