@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "retailcode-mtn.ussdgateway.name" . }}
+  annotations:
+    metallb.universe.tf/address-pool: retcode
   labels:
     app: {{ include "retailcode-mtn.ussdgateway.name" . }}
 spec:
