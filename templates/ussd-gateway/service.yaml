@@ -12,3 +12,4 @@ spec:
       name: {{ .Values.ussdgateway.service.name }}
       port: {{ .Values.ussdgateway.service.port }}
   type: {{ .Values.ussdgateway.service.type }}
+  loadBalancerIP: 10.184.52.231
